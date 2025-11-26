@@ -1,0 +1,56 @@
+<h3>User Management</h3>
+
+<form (ngSubmit)="createUser()" class="inline-form">
+  <input placeholder="username" [(ngModel)]="newUser.username" name="username" required>
+  <input placeholder="email" [(ngModel)]="newUser.email" name="email" required>
+  <select [(ngModel)]="newUser.role" name="role">
+    <option value="approver">Approver</option>
+    <option value="user">User</option>
+  </select>
+  <button type="submit">Add User</button>
+</form>
+
+<h4>Pending Approvals</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of pending">
+      <td>{{u.username}}</td>
+      <td>{{u.email}}</td>
+      <td>{{u.role}}</td>
+      <td>
+        <button (click)="approve(u)">Approve</button>
+        <button (click)="reject(u)">Reject</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>All Users</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Status</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{u.username}}</td>
+      <td>{{u.email}}</td>
+      <td>{{u.role}}</td>
+      <td>{{u.status}}</td>
+      <td>{{u.rejectionReason}}</td>
+    </tr>
+  </tbody>
+</table>

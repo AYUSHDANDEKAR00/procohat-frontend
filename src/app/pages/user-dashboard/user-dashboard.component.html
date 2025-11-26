@@ -1,0 +1,26 @@
+<div class="main">
+  <h2>My Documents</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>My Status</th>
+        <th>Overall Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of documents">
+        <td>{{d.name}}</td>
+        <td>{{myStatus(d)}}</td>
+        <td>{{d.overallStatus}}</td>
+        <td>
+          <button *ngIf="canApprove(d)" (click)="approve(d)">Approve</button>
+          <span *ngIf="!canApprove(d)">
+            {{ d.overallStatus === 'Approved' ? 'Completed' : 'Pending for approval' }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

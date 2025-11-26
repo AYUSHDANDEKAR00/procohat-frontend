@@ -1,0 +1,16 @@
+.doc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 380px;
+  margin-bottom: 14px;
+}
+.doc-form input,
+.doc-form select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+.doc-form button {
+  align-self: flex-start;
+}

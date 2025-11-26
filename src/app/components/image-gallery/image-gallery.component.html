@@ -1,0 +1,27 @@
+<h3>Dynamic Image Gallery</h3>
+
+<input type="file" accept="image/*" (change)="onChange($event)" multiple />
+
+<button (click)="upload()">Upload / Update</button>
+
+<hr>
+
+<div class="preview">
+  <div *ngIf="preview1">
+    <img [src]="preview1" alt="Preview 1">
+  </div>
+
+  <div *ngIf="preview2">
+    <img [src]="preview2" alt="Preview 2">
+  </div>
+</div>
+
+<h4 *ngIf="gallery">Stored Images</h4>
+<div class="preview" *ngIf="gallery">
+  <div *ngIf="gallery.image1Url">
+    <img [src]="gallery.image1Url" alt="Image 1">
+  </div>
+  <div *ngIf="gallery.image2Url">
+    <img [src]="gallery.image2Url" alt="Image 2">
+  </div>
+</div>

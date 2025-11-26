@@ -1,0 +1,36 @@
+<h3>Document Approval</h3>
+
+<form (ngSubmit)="create()" class="doc-form">
+  <input placeholder="Document name" [(ngModel)]="docName" name="docName" required>
+
+  <label>Approvers (Approved Users)</label>
+  <select multiple [(ngModel)]="selectedApprovers" name="selectedApprovers">
+    <option *ngFor="let u of approvedUsers" [value]="u._id">
+      {{u.username}} ({{u.email}})
+    </option>
+  </select>
+
+  <button type="submit">Create &amp; Start Approval</button>
+</form>
+
+<h4>Documents</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Approvers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of documents">
+      <td>{{d.name}}</td>
+      <td>{{d.overallStatus}}</td>
+      <td>
+        <span *ngFor="let a of d.approvers; let i = index">
+          {{i+1}}. {{a.user?.username || 'User'}} - {{a.status}}&nbsp;
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

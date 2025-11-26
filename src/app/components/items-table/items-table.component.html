@@ -1,0 +1,46 @@
+<div class="table-header">
+  <h3>Items Table</h3>
+  <button (click)="openAdd()">+ Add Item</button>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{item.title}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.amount}}</td>
+      <td>
+        <button (click)="openEdit(item)">Edit</button>
+        <button (click)="remove(item)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal">
+    <h4>{{editing ? 'Edit Item' : 'Add Item'}}</h4>
+    <form (ngSubmit)="save()">
+      <label>Title</label>
+      <input [(ngModel)]="form.title" name="title" required>
+      <label>Description</label>
+      <input [(ngModel)]="form.description" name="description">
+      <label>Amount</label>
+      <input type="number" [(ngModel)]="form.amount" name="amount">
+      <div class="buttons">
+        <button type="submit">Save</button>
+        <button type="button" (click)="close()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

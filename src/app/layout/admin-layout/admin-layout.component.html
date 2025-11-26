@@ -1,0 +1,29 @@
+<div class="layout">
+  <app-sidebar [tab]="tab" (tabChangeEvent)="tab = $event"></app-sidebar>
+
+  <main class="main">
+    <header class="top-bar">
+      <div>Admin Dashboard</div>
+      <div class="stats">
+        <span>Total: {{stats.total}}</span>
+        <span>Pending: {{stats.pending}}</span>
+      </div>
+    </header>
+
+    <section *ngIf="tab==='table'">
+      <app-items-table></app-items-table>
+    </section>
+
+    <section *ngIf="tab==='gallery'">
+      <app-image-gallery></app-image-gallery>
+    </section>
+
+    <section *ngIf="tab==='users'">
+      <app-admin-users (statsChange)="onStatsChange($event)"></app-admin-users>
+    </section>
+
+    <section *ngIf="tab==='documents'">
+      <app-document-section></app-document-section>
+    </section>
+  </main>
+</div>
